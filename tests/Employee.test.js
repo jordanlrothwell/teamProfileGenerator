@@ -30,4 +30,41 @@ describe("Employee", () => {
       expect(john.getRole()).toEqual("Employee");
     });
   });
+  describe("Validation", () => {
+    it("should throw an error if no arguments are provided", () => {
+      const cb = () => new Employee();
+
+      expect(cb).toThrow();
+    });
+    it("should throw an error if no email is provided", () => {
+      const cb = () => new Employee("John", 123);
+
+      expect(cb).toThrow();
+    })
+    it("should throw an error if only a name is provided", () => {
+      const cb = () => new Employee("John");
+
+      expect(cb).toThrow();
+    })
+    it("should throw an error if a non-string name is provided", () => {
+      const cb = () => new Employee(14, 123, "john@gmail.com");
+
+      expect(cb).toThrow();
+    })
+    it("should throw an error if non-numeric id is provided", () => {
+      const cb = () => new Employee("John", "123", "john@gmail.com");
+
+      expect(cb).toThrow();
+    })
+    it("should throw an error if non-string email is provided", () => {
+      const cb = () => new Employee("John", "123", true);
+
+      expect(cb).toThrow();
+    })
+    it("should throw an error if an invalid email address is provided", () => {
+      const cb = () => new Employee("John", "123", "john@gmail.");
+
+      expect(cb).toThrow();
+    })
+  });
 });
