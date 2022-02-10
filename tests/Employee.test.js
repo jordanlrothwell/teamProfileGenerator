@@ -1,4 +1,4 @@
-const Employee = require('../lib/Employee.js')
+const Employee = require("../lib/Employee.js");
 
 describe("Employee", () => {
   describe("Initialisation", () => {
@@ -10,9 +10,24 @@ describe("Employee", () => {
       expect(john.email).toEqual("john@gmail.com");
     });
     it("should give that object a getName() method which returns its name property", () => {
-      const johnson = new Employee("Johnson", 456, "johnson@gmail.com");
+      const john = new Employee("John", 123, "john@gmail.com");
 
-      expect(johnson.getName()).toEqual("Johnson");
-    })
+      expect(john.getName()).toEqual("John");
+    });
+    it("should give that object a getID() method which returns its id property", () => {
+      const john = new Employee("John", 123, "john@gmail.com");
+
+      expect(john.getId()).toEqual(123);
+    });
+    it("should give that object a getEmail() method which returns its email property", () => {
+      const john = new Employee("John", 123, "john@gmail.com");
+
+      expect(john.getEmail()).toEqual("john@gmail.com");
+    });
+    it("should give that object a getRole() method which returns its role type", () => {
+      const john = new Employee("John", 123, "john@gmail.com");
+
+      expect(john.getRole()).toEqual("Employee");
+    });
   });
 });
