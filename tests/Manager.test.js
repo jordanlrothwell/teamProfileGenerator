@@ -10,6 +10,11 @@ describe("Manager", () => {
       expect(john.email).toEqual("john@gmail.com");
       expect(john.officeNumber).toEqual(4);
     });
+    it("should default to an officeNumber of 1 if none is provided", () => {
+      const john = new Manager("John", 123, "john@gmail.com");
+
+      expect(john.officeNumber).toEqual(1);
+    });
     it("should give that object a getName() method which returns its name property", () => {
       const john = new Manager("John", 123, "john@gmail.com", 4);
 
@@ -37,21 +42,16 @@ describe("Manager", () => {
 
       expect(cb).toThrow();
     });
-    it("should throw an error if no officeNumber is provided", () => {
-      const cb = () => new Manager("John", 123, "john@gmail.com");
-
-      expect(cb).toThrow();
-    });
     it("should throw an error if only a name and id are provided", () => {
       const cb = () => new Manager("John", 123);
 
       expect(cb).toThrow();
     });
     it("should throw an error if only a name is provided", () => {
-        const cb = () => new Manager("John");
-  
-        expect(cb).toThrow();
-      });
+      const cb = () => new Manager("John");
+
+      expect(cb).toThrow();
+    });
     it("should throw an error if a non-string name is provided", () => {
       const cb = () => new Manager(14, 123, "john@gmail.com", 4);
 
