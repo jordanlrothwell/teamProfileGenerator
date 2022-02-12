@@ -11,7 +11,9 @@ const Intern = require("./lib/Intern");
 const questions = require("./lib/questions");
 
 // get existing employee data
-const employeesJSON = fs.readFileSync(path.resolve(__dirname, "./data/employees.json"));
+const employeesJSON = fs.readFileSync(
+  path.resolve(__dirname, "./data/employees.json")
+);
 const employeesObj = JSON.parse(employeesJSON);
 
 // function to create new employee instance + add it to the employees.json file
@@ -33,12 +35,21 @@ const createEmployee = async function () {
 
   const updatedEmployees = JSON.stringify(employeesObj);
 
-  fs.writeFile("./data/employees.json", updatedEmployees, (err) => {
+  await fs.writeFile("./data/employees.json", updatedEmployees, (err) => {
     if (err) {
       console.log("Failed to successfully update employees.json");
     }
-    console.log("Successfully updated employees.json!");
   });
+
+  const repeat = await inquirer.prompt({
+    type: "confirm",
+    name: "addAnother",
+    message: "Would you like to add another employee?",
+  });
+
+  if (repeat.addAnother) {
+      createEmployee();
+  }
 };
 
-createEmployee()
+createEmployee();
