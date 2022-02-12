@@ -8,13 +8,16 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const questions = require("./lib/questions");
-const generalQuestions = questions[0];
-const conditionalQuestions = questions[1];
 
-// inquirer prompt
-// const getGeneralInfo = async function () {
-//     await inquirer.prompt(generalQuestions);
-//     console.log(answers)
-// }
+// inquirer prompts
+const createEmployee = async function () {
+  const employeeInfo = await inquirer.prompt(questions);
 
-// getGeneralInfo();
+  if (employeeInfo.employeeType == "Manager") {
+    const { name, id, email, officeNumber } = employeeInfo;
+    const newManager = new Manager(name, id, email, officeNumber);
+    console.log(newManager);
+  }
+};
+
+createEmployee();
