@@ -51,6 +51,8 @@ This project was created to practice test-driven development; classes; and data 
 
 The user is prompted to create a team one employee at a time, and the results are used to generate new instances of their respective subclass (Manager, Engineer, or Intern) - these are used, in turn, to generate a bootstrap-styled html file displaying these employees in individual cards.
 
+![demonstration](./images/demonstration.gif)
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 

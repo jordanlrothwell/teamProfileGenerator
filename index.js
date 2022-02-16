@@ -44,7 +44,7 @@ const init = async function () {
     message: "Would you like to add another employee?",
   });
   if (repeat.addAnother) {
-    await createEmployees();
+    init();
   } else {
     writeContent();
   }

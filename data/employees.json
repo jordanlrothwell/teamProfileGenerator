@@ -1,1 +1,1 @@
-[]
+[{"employeeType":"Manager","name":"John","id":123,"email":"john@gmail.com","officeNumber":2},{"employeeType":"Engineer","name":"Suzy","id":456,"email":"suzy@yahoo.com.au","github":"schnoozy"},{"employeeType":"Intern","name":"Doug","id":789,"email":"doug@doug.com","school":"St Doug's"}]
