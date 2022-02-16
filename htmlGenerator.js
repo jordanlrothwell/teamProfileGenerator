@@ -8,10 +8,10 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
 // get existing employee data
-const employeesJSON = fs.readFileSync(
+let employeesJSON = fs.readFileSync(
   path.resolve(__dirname, "./data/employees.json")
 );
-const employeesArr = JSON.parse(employeesJSON);
+let employeesArr = JSON.parse(employeesJSON);
 
 // instantiates subclasses and creates card for each object in employees.json
 const htmlGenerator = function () {
@@ -32,7 +32,7 @@ const htmlGenerator = function () {
         employee.email,
         employee.github
       );
-      var dynamic = "Github Username:";
+      var dynamic = "Github Username";
     } else {
       var newEmployee = new Intern(
         employee.name,
@@ -94,7 +94,7 @@ const htmlGenerator = function () {
           </div>
   
       </div>
-  
+
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
           crossorigin="anonymous"></script>
