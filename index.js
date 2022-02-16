@@ -4,10 +4,8 @@ const path = require("path");
 const inquirer = require("inquirer");
 
 // import modules
-const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
 const questions = require("./lib/questions");
+const htmlGenerator = require("./htmlGenerator");
 
 // get existing employee data
 const employeesJSON = fs.readFileSync(
@@ -15,17 +13,19 @@ const employeesJSON = fs.readFileSync(
 );
 const employeesArr = JSON.parse(employeesJSON);
 
-// function to create new employee instance + add it to the employees.json file
-const createEmployee = async function () {
-  const employeeInfo = await inquirer.prompt(questions);
+// content writer function
+const writeContent = async function () {
+  const content = await htmlGenerator();
+  fs.writeFile("teamProfilePage.html", content, (err) => {
+    if (err) {
+      console.log("Failed to create teamProfilePage.html");
+    }
+  })
+};
 
-  if (employeeInfo.employeeType == "Manager") {
-    const { name, id, email, officeNumber } = employeeInfo;
-  } else if (employeeInfo.employeeType == "Engineer") {
-    const { name, id, email, github } = employeeInfo;
-  } else {
-    const { name, id, email, school } = employeeInfo;
-  }
+// function to create new employee instance + add it to the employees.json file
+const createEmployees = async function () {
+  const employeeInfo = await inquirer.prompt(questions);
 
   employeesArr.push(employeeInfo);
 
@@ -44,8 +44,11 @@ const createEmployee = async function () {
   });
 
   if (repeat.addAnother) {
-      createEmployee();
+    createEmployees();
+  } else {
+    writeContent();
   }
 };
 
-createEmployee();
+
+init();
