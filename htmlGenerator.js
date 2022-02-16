@@ -7,14 +7,13 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-// get existing employee data
-let employeesJSON = fs.readFileSync(
-  path.resolve(__dirname, "./data/employees.json")
-);
-let employeesArr = JSON.parse(employeesJSON);
-
 // instantiates subclasses and creates card for each object in employees.json
 const htmlGenerator = function () {
+  // get existing employee data
+  const employeesJSON = fs.readFileSync(
+  path.resolve(__dirname, "./data/employees.json")
+  );
+  const employeesArr = JSON.parse(employeesJSON);
   var cards = "";
   for (const employee of employeesArr) {
     if ("officeNumber" in employee) {
