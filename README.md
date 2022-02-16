@@ -71,6 +71,8 @@ To use this project, clone the repository and install the required npm packages.
 
 This code was designed, in part, to practice test-driven development. It includes a suite of tests for the Employee class and its subclasses. The site generation was tested by repeatedly answering and refreshing the prompts until it consistently functioned as intended.
 
+![tests](./images/tests.gif)
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
