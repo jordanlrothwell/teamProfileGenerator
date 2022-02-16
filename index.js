@@ -1,10 +1,9 @@
 // import packages
 const fs = require("fs");
-const inquirer = require("inquirer");
 const path = require("path");
+const inquirer = require("inquirer");
 
 // import modules
-const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -14,7 +13,7 @@ const questions = require("./lib/questions");
 const employeesJSON = fs.readFileSync(
   path.resolve(__dirname, "./data/employees.json")
 );
-const employeesObj = JSON.parse(employeesJSON);
+const employeesArr = JSON.parse(employeesJSON);
 
 // function to create new employee instance + add it to the employees.json file
 const createEmployee = async function () {
@@ -22,18 +21,15 @@ const createEmployee = async function () {
 
   if (employeeInfo.employeeType == "Manager") {
     const { name, id, email, officeNumber } = employeeInfo;
-    var newEmployee = new Manager(name, id, email, officeNumber);
   } else if (employeeInfo.employeeType == "Engineer") {
     const { name, id, email, github } = employeeInfo;
-    var newEmployee = new Engineer(name, id, email, github);
   } else {
     const { name, id, email, school } = employeeInfo;
-    var newEmployee = new Intern(name, id, email, school);
   }
 
-  employeesObj.push(newEmployee);
+  employeesArr.push(employeeInfo);
 
-  const updatedEmployees = JSON.stringify(employeesObj);
+  const updatedEmployees = JSON.stringify(employeesArr);
 
   await fs.writeFile("./data/employees.json", updatedEmployees, (err) => {
     if (err) {
