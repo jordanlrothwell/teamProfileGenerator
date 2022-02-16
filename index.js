@@ -8,7 +8,7 @@ const questions = require("./lib/questions");
 const htmlGenerator = require("./htmlGenerator");
 
 // function to get user input and add to employees.json
-const createEmployees = function () {
+const createEmployees = async function () {
   const employeesJSON = fs.readFileSync(
     path.resolve(__dirname, "./data/employees.json")
   );
